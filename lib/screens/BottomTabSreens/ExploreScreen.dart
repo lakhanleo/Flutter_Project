@@ -52,17 +52,33 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   ),
                   horizontalSpace(10),
                   RichText(
-                      text: const TextSpan(
-                    text: "Hello, ",
-                    style: TextStyle(color: Colors.black, fontSize: 18,fontFamily: "Outfit",),
-                        children: [TextSpan(text: "Lakhan",style: TextStyle(color: Colors.black,fontFamily: "Outfit",fontWeight: FontWeight.bold, fontSize: 18),),]
-                  ),
+                    text: const TextSpan(
+                        text: "Hello, ",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontFamily: "Outfit",
+                        ),
+                        children: [
+                          TextSpan(
+                            text: "Lakhan",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: "Outfit",
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18),
+                          ),
+                        ]),
                   )
                 ],
               ),
             ),
             const Padding(
-              padding: EdgeInsets.only(left: 20,right: 20,top: 20,),
+              padding: EdgeInsets.only(
+                left: 20,
+                right: 20,
+                top: 20,
+              ),
               child: Text(
                 "Let's Plan a Trip Together Bud !",
                 style: TextStyle(
@@ -71,32 +87,50 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     fontWeight: FontWeight.w900),
               ),
             ),
+
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-              // padding: const EdgeInsets.only(left: 20, right: 5),
-              // height: 60,
-              // decoration: BoxDecoration(
-              //   color: Colors.grey.shade100,
-              //   borderRadius: BorderRadius.circular(15),
-              // ),
-              child: Material(elevation: 5,borderRadius: BorderRadius.circular(15),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 25),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        hintText: "Search for places",
-                        hintStyle: TextStyle(color: Colors.grey.shade600),
-                        border: InputBorder.none,
-                        suffixIcon: IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              CupertinoIcons.search,
-                              color: Colors.grey.shade600,
-                            ))),
+              margin: EdgeInsets.symmetric(vertical: 15),
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              height: hieght / 7,
+              width: width,
+              child: ListView(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                children: [
+                  PlaceChip(
+                    imagePath: "assets/icons/mountain.png",
+                    iconColor: Colors.blue,
+                    bgColor: Colors.blue.withOpacity(0.09),
+                    size: 45, textColor: Colors.blue, text: 'MOUNTAINS',
                   ),
-                ),
+                  PlaceChip(
+                    imagePath: "assets/icons/beach.png",
+                    iconColor: Colors.amber,
+                    bgColor: Colors.amber.withOpacity(0.09),
+                    size: 30,textColor: Colors.amber, text: 'BEACH',
+                  ),
+                  PlaceChip(
+                    imagePath: "assets/icons/religious.png",
+                    iconColor: Colors.orange,
+                    bgColor: Colors.orange.withOpacity(0.09),
+                    size: 30, textColor: Colors.orange, text: 'RELIGOUS',
+                  ),
+                  PlaceChip(
+                    imagePath: "assets/icons/cruise.png",
+                    iconColor: Colors.grey,
+                    bgColor: Colors.grey.withOpacity(0.09),
+                    size: 30, textColor: Colors.grey, text: 'CRUISE',
+                  ),
+                  PlaceChip(
+                    imagePath: "assets/icons/wildlife.png",
+                    iconColor: Colors.green,
+                    bgColor: Colors.green.withOpacity(0.09),
+                    size: 30, textColor: Colors.green, text: 'WILDLIFE',
+                  ),
+                ],
               ),
             ),
+
             // AnimatedContainer(
             //   duration: const Duration(milliseconds: 400),
             //   width: folded ? MediaQuery.of(context).size.width : 60,
@@ -144,7 +178,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
                   return Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     padding: const EdgeInsets.all(6),
                     // decoration: BoxDecoration(
                     //     color: Colors.white,
@@ -156,11 +191,19 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     //           offset: Offset(4, -0.5))
                     //     ],
                     //     borderRadius: BorderRadius.circular(15)),
-                    child: Material(elevation:  ,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    child: Material(
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12)),
                       child: Column(
                         children: [
                           ///picture
-                          Container(margin: EdgeInsets.only(left: 5,right: 5,top: 5,),
+                          Container(
+                            margin: EdgeInsets.only(
+                              left: 5,
+                              right: 5,
+                              top: 5,
+                            ),
                             height: hieght / 3,
                             width: width / 1.5,
                             decoration: BoxDecoration(
@@ -230,6 +273,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                             ),
                           ),
                           verticalSpace(4),
+
                           ///info
                           Container(
                               padding: const EdgeInsets.only(
@@ -317,5 +361,48 @@ class _ExploreScreenState extends State<ExploreScreen> {
         ),
       ),
     ));
+  }
+}
+
+class PlaceChip extends StatelessWidget {
+  final Color bgColor;
+  final Color iconColor;
+  final Color textColor;
+  final String text;
+  final String imagePath;
+  final double size;
+
+  const PlaceChip({
+    super.key,
+    required this.iconColor,
+    required this.imagePath,
+    required this.bgColor,
+    required this.size,
+    required this.textColor, required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 5),
+          child: InkWell(
+            onTap: () {},
+            child: CircleAvatar(
+              radius: 30,
+              backgroundColor: bgColor,
+              child: ImageIcon(
+                AssetImage(imagePath),
+                size: size,
+                color: iconColor,
+              ),
+            ),
+          ),
+        ),
+
+        Text(text,style: TextStyle(fontSize: 8,fontFamily: "Yatra",color: textColor),),
+      ],
+    );
   }
 }

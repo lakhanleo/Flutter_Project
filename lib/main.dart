@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:tripbud/screens/MainView/MainScreen.dart';
 
-void main() {
+Future main() async {
   runApp(const MyApp());
+  await Future.delayed(Duration(seconds: 2));
+  FlutterNativeSplash.remove();
 }
 
 class MyApp extends StatelessWidget {

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tripbud/constants/Constants.dart';
@@ -21,33 +22,33 @@ class _SearchScreenState extends State<SearchScreen> {
             child: Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const Spacer(),
-        SvgPicture.asset(
-          height: hieght/2,
-          "assets/svg/Trip-pana.svg",
-        ),
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-          child: Text(
-            "Explore Your Travel Journey only with Us",
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 22, fontFamily: "TenorSans"),
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+          // padding: const EdgeInsets.only(left: 20, right: 5),
+          // height: 60,
+          // decoration: BoxDecoration(
+          //   color: Colors.grey.shade100,
+          //   borderRadius: BorderRadius.circular(15),
+          // ),
+          child: Material(elevation: 5,borderRadius: BorderRadius.circular(15),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 25),
+              child: TextFormField(
+                decoration: InputDecoration(
+                    hintText: "Search for places",
+                    hintStyle: TextStyle(color: Colors.grey.shade600),
+                    border: InputBorder.none,
+                    suffixIcon: IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          CupertinoIcons.search,
+                          color: Colors.grey.shade600,
+                        ))),
+              ),
+            ),
           ),
         ),
-        verticalSpace(15),
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-          child: Text(
-            "All your travel time , leave the rest of worry to us",
-            textAlign: TextAlign.center,
-            style: TextStyle(fontFamily: "TenorSans"),
-          ),
-        ),
-        const Spacer(),
-        ElevatedButton(onPressed: () {},
-            style: ElevatedButton.styleFrom(shape: const StadiumBorder(),padding: EdgeInsets.symmetric(vertical: 10,horizontal: width/3)),
-          child: const Text("Get Started")
-        )
+
       ],
     ),
         ));
